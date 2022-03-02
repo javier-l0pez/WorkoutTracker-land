@@ -1,0 +1,85 @@
+@mixin gridCenter {
+  align-self: center;
+  justify-self: center;
+}
+
+@mixin grid3by3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
+
+@mixin gridgapflow {
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.6fr 1fr 1fr .7fr 0.3fr;
+    @include gridgapflow();
+    grid-template-areas: "header header header header header" "main main main main main" "main main main main main" "main main main main main" "footer footer footer footer footer";
+  }
+  
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr;
+    @include gridgapflow();
+    grid-template-areas: ". myCanva .";
+    grid-area: header;
+    background: linear-gradient(to bottom, $primaryColor, $secondaryColor);
+  }
+  
+  .myCanva {
+    grid-area: myCanva;
+    @include gridCenter();
+  }
+  
+  .main {
+    @include grid3by3();
+    grid-template-areas: "yt yt logo" "yt yt logo" "yt yt audio";
+    grid-area: main;
+  }
+  
+  .yt {
+    grid-area: yt;
+  }
+  
+  .logo {
+    grid-area: logo;
+    padding: 0em 1em;
+    background: radial-gradient(closest-side, $primaryColor, $secondaryColor);
+  }
+  
+  .audio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "centeraudio centeraudio centeraudio" "centeraudio centeraudio centeraudio" "centeraudio centeraudio centeraudio";
+    grid-area: audio;
+    background: linear-gradient(to top, $secColorHalf, $secondaryColor);
+  }
+  
+  .centeraudio {
+    @include gridCenter();
+    grid-area: centeraudio;
+  }
+  
+  .footer {
+    @include grid3by3();
+    grid-template-areas: "name name name" "name name name" "name name name";
+    grid-area: footer;
+    background: linear-gradient(to top, $primaryColor, $secColorHalf);
+  }
+  
+  .name {
+    justify-self: end;
+    align-self: center;
+    grid-area: name;
+    padding-right: 3em;
+  }

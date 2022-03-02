@@ -1,34 +1,172 @@
 * {
-    box-sizing: border-box; 
+    box-sizing: border-box;
     font-family: 'Signika', sans-serif;
-  }
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: row;
+    padding: 0;
     margin: 0;
   }
-  .col-1 {
-    background: #090069;
-    flex: 1;
+
+  html {
+    background: radial-gradient(closest-side, #0064a1, #090069);
   }
-  .col-2 {
-    display: flex;
-    flex-direction: column;
-    flex: 5;
+
+  .container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.6fr 1fr 1fr .7fr 0.3fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "header header header header header"
+      "main main main main main"
+      "main main main main main"
+      "main main main main main"
+      "footer footer footer footer footer";
   }
-  .content {
-    display: flex;
-    flex-direction: row;
+  
+  .header {  display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". myCanva .";
+    grid-area: header;
+    background: linear-gradient(to bottom, #090069, #0064a1);
   }
-  .content > article {
-    flex: 4;
-    min-height: 60vh;
+  
+  .myCanva { 
+    grid-area: myCanva;
+    align-self: center;
+    justify-self: center;
   }
-  header, footer {
-    background: #009AFA;
-    height: 20vh;
+  
+  .main {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "yt yt logo"
+      "yt yt logo"
+      "yt yt audio";
+    grid-area: main;
   }
-  header, footer, article, nav {
-    padding: 1em;
+  
+  .yt { grid-area: yt; }
+  
+  .logo {
+    grid-area: logo;
+    padding: 0em 1em;
+    background: radial-gradient(closest-side, #090069, #0064a1);
   }
+  
+  .audio {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "centeraudio centeraudio centeraudio"
+      "centeraudio centeraudio centeraudio"
+      "centeraudio centeraudio centeraudio"; 
+    grid-area: audio;
+    background: linear-gradient(to top, rgba(9, 0, 105, 0.5), #0064a1);
+  }
+
+  .centeraudio {
+    justify-self: center; 
+    align-self: center; 
+    grid-area: centeraudio; 
+  }
+  
+  .footer {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "name name name"
+      "name name name"
+      "name name name";
+    grid-area: footer;
+    background: linear-gradient(to top, rgba(9, 0, 105, 1), rgba(9, 0, 105, 0.5));
+  }
+  
+  .name {
+    justify-self: end;
+    align-self: center;
+    grid-area: name;
+    padding-right: 3em;
+  }
+
+  #myCanvas {
+    width: 100%;
+    object-fit: cover;
+  }
+  .embeded{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  #gymSvg {
+    object-fit: cover;
+  }
+  footer {
+    font-weight: bold;
+    color: yellow;
+  }
+  .gymOutline, .gymInline{
+    fill-opacity: 0;
+    stroke: yellow;
+    stroke-width: 3px;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2000;
+  }
+  .gymOutline {
+    animation: man 6s ease-in-out;
+  }
+  @keyframes man {
+    0% {
+      stroke-dashoffset: 2000;
+    }
+    80% {
+      stroke-dashoffset: 0;
+    }
+  }
+  .gymInline {
+    animation: muscles 12s ease-in-out;
+  }
+  @keyframes muscles {
+    0% {
+      stroke-dashoffset: 2000;
+    }
+    20% {
+      stroke-dashoffset: 2000;
+    }
+    60% {
+      stroke-dashoffset: 600;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  /* #path71 {
+    visibility: visible;
+  }
+  #path69 {
+    visibility: visible;
+  }
+  #path67 {
+    visibility: visible;
+  }
+  #path65 {
+    visibility: visible;
+  }
+  #path63 {
+    visibility: visible;
+  }
+  #path61 {
+    visibility: visible;
+  }
+  #path59 {
+    visibility: visible;
+  } */

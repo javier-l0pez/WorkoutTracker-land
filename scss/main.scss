@@ -1,0 +1,17 @@
+$primaryColor : #090069;
+$secondaryColor: #0064a1;
+$secColorHalf: rgba(9, 0, 105, 0.5);
+
+@import "./elements";
+@import "./grid";
+
+* {
+    box-sizing: border-box;
+    font-family: 'Signika', sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    background: radial-gradient(closest-side, $secondaryColor, $primaryColor);
+  }
